@@ -309,11 +309,12 @@ const COUNTRIES = [
   { name: "Zimbabwe", iso: "ZW", code: "+263" }
 ];
 
-const ccSelect = document.getElementById('ccSelect');
-if (ccSelect) {
+document.querySelectorAll('.cc-select').forEach(setupCountryCodeSelect);
+
+function setupCountryCodeSelect(ccSelect) {
   const ccTrigger = ccSelect.querySelector('.cc-trigger');
   const ccTriggerText = ccSelect.querySelector('.cc-trigger-text');
-  const ccValue = document.getElementById('ccValue');
+  const ccValue = ccSelect.querySelector('input[type="hidden"]');
   const ccDropdown = ccSelect.querySelector('.cc-dropdown');
   const ccSearch = ccSelect.querySelector('.cc-search');
   const ccList = ccSelect.querySelector('.cc-list');
@@ -403,4 +404,33 @@ if (ccSelect) {
   });
 
   renderList();
+}
+
+// Lead capture modal — shows automatically 10s after page load
+const leadModal = document.getElementById('leadModal');
+if (leadModal) {
+  const MODAL_SESSION_KEY = 'kpaLeadModalShown';
+
+  function openLeadModal() {
+    leadModal.classList.add('open');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeLeadModal() {
+    leadModal.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    sessionStorage.setItem(MODAL_SESSION_KEY, '1');
+  }
+
+  leadModal.querySelectorAll('[data-modal-close]').forEach((el) => {
+    el.addEventListener('click', closeLeadModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && leadModal.classList.contains('open')) closeLeadModal();
+  });
+
+  if (!sessionStorage.getItem(MODAL_SESSION_KEY)) {
+    setTimeout(openLeadModal, 10000);
+  }
 }

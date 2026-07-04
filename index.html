@@ -500,6 +500,58 @@
     <p class="copy">©2026. All Rights Reserved.</p>
   </footer>
 
+  <div class="lead-modal" id="leadModal">
+    <div class="lead-modal-backdrop" data-modal-close></div>
+    <div class="lead-modal-card">
+      <button type="button" class="lead-modal-close" aria-label="Close" data-modal-close>&times;</button>
+      <p class="form-kicker">Request Callback</p>
+      <h3 class="form-title">Send Us a Message</h3>
+      <p class="form-subtitle">Share your details and our team will reach out within 24 hours.</p>
+      <form class="enquiry-form" onsubmit="return false;">
+        <div class="field-group">
+          <label for="modalFullName">Full Name</label>
+          <input id="modalFullName" type="text" placeholder="Enter your full name" required>
+        </div>
+        <div class="field-group">
+          <label for="modalPhoneNumber">Phone Number</label>
+          <div class="phone-row">
+            <div class="cc-select">
+              <button type="button" class="cc-trigger" aria-haspopup="listbox" aria-expanded="false">
+                <span class="cc-trigger-text">IN +91</span>
+                <span class="cc-arrow">▾</span>
+              </button>
+              <input type="hidden" name="country_code" value="+91">
+              <div class="cc-dropdown">
+                <input type="text" class="cc-search" placeholder="Search country or code…" autocomplete="off">
+                <ul class="cc-list" role="listbox"></ul>
+              </div>
+            </div>
+            <input id="modalPhoneNumber" type="tel" placeholder="98765 43210" required>
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="modalEmailAddress">Email Address</label>
+          <input id="modalEmailAddress" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field-group">
+          <label for="modalConfiguration">Preferred Configuration</label>
+          <div class="select-wrap">
+            <select id="modalConfiguration">
+              <option value="">Select a configuration</option>
+              <option>2 BHK — From ₹1.76 Cr</option>
+              <option>2.5 BHK — From ₹2.09 Cr</option>
+              <option>3 BHK — From ₹2.55 Cr</option>
+              <option>3.5 BHK — From ₹2.84 Cr</option>
+              <option>Not Decided Yet</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Book Site Visit</button>
+        <p class="form-privacy">🔒 Your information is kept confidential and never shared.</p>
+      </form>
+    </div>
+  </div>
+
   <div class="floating-actions">
     <a href="https://wa.me/918431323966" target="_blank" rel="noopener" class="floating-btn whatsapp" aria-label="Chat on WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.35A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.6-1.3 1.15-1.78 1.2-.46.05-.9.22-3.02-.63-2.55-1.05-4.2-3.65-4.32-3.82-.13-.17-1.03-1.37-1.03-2.62 0-1.24.65-1.85.88-2.1.22-.25.5-.3.66-.3.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.73 1.83.8 1.96.06.14.1.3.02.48-.09.18-.13.3-.26.46-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.15.27.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.12 1.31.27.13.43.11.6-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.27.13.45.2.51.3.07.12.07.68-.15 1.29z"/></svg>
