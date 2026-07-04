@@ -39,6 +39,17 @@ if (preloader) {
   }
 }
 
+// Hero image slider — auto-advance through slides with a crossfade
+const heroSlides = document.querySelectorAll('.hero-photo');
+if (heroSlides.length > 1) {
+  let heroSlideIndex = 0;
+  setInterval(() => {
+    heroSlides[heroSlideIndex].classList.remove('active');
+    heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+    heroSlides[heroSlideIndex].classList.add('active');
+  }, 6000);
+}
+
 // Fade-up on scroll
 const faders = document.querySelectorAll('.fade-up');
 const observer = new IntersectionObserver((entries) => {
