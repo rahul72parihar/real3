@@ -380,7 +380,14 @@ function setupCountryCodeSelect(ccSelect) {
     ccSearch.value = '';
     renderList();
     positionDropdown();
-    setTimeout(() => ccSearch.focus(), 50);
+    // Skip auto-focusing the search field on touch devices — focusing a
+    // text input immediately pops the on-screen keyboard and covers the
+    // list the user just opened. Desktop keeps the convenience of typing
+    // right away.
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (!isTouchDevice) {
+      setTimeout(() => ccSearch.focus(), 50);
+    }
   }
 
   function closeCcDropdown() {
