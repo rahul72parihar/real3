@@ -330,8 +330,20 @@ function setupCountryCodeSelect(ccSelect) {
     const maxLeft = window.innerWidth - ccDropdown.offsetWidth - 12;
     if (left > maxLeft) left = Math.max(12, maxLeft);
     ccDropdown.style.position = 'fixed';
-    ccDropdown.style.top = `${rect.bottom + 8}px`;
     ccDropdown.style.left = `${left}px`;
+
+    // Flip above the trigger if there isn't enough room below (common on
+    // mobile when the field sits in the lower half of the screen).
+    const dropdownHeight = ccDropdown.offsetHeight;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
+    if (spaceBelow < dropdownHeight && spaceAbove > spaceBelow) {
+      ccDropdown.style.top = 'auto';
+      ccDropdown.style.bottom = `${window.innerHeight - rect.top + 8}px`;
+    } else {
+      ccDropdown.style.bottom = 'auto';
+      ccDropdown.style.top = `${rect.bottom + 8}px`;
+    }
   }
 
   function renderList(filter = '') {
@@ -362,12 +374,12 @@ function setupCountryCodeSelect(ccSelect) {
   }
 
   function openCcDropdown() {
-    positionDropdown();
     ccSelect.classList.add('open');
     ccDropdown.classList.add('open');
     ccTrigger.setAttribute('aria-expanded', 'true');
     ccSearch.value = '';
     renderList();
+    positionDropdown();
     setTimeout(() => ccSearch.focus(), 50);
   }
 
